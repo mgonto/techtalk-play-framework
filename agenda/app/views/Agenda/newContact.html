@@ -1,0 +1,20 @@
+#{extends 'main.html' /}
+#{set title:'Nuevo contacto' /}
+
+<form  method="POST" action="@{Agenda.create()}">
+    #{field 'contact.name'}
+	<p>
+	  <label>&{'contactName'}</label>
+	  <input type="text" id="${field.id}" name="${field.name}" value="${field.value}" class="${field.errorClass}">
+	  <span class="error">${field.error}</span>
+	</p>
+	#{/}
+	#{field 'contact.telephoneNumber'}
+    <p>
+      <label>&{'telNumber'}</label>
+      <input type="text" id="${field.id}" name="${field.name}" value="${field.value}" class="${field.errorClass}">
+      <span class="error">${field.error}</span>
+    </p>
+    #{/}
+    <input type="submit" value="Mandar"/>
+</form>
