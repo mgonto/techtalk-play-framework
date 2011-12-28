@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+
+<!--
+  Google HTML5 slide template
+
+  Authors: Luke Mahé (code)
+           Marcin Wichary (code and design)
+           
+           Dominic Mazzoni (browser compatibility)
+           Charles Chen (ChromeVox support)
+
+  URL: http://code.google.com/p/html5slides/
+-->
+
+<html>
+    <head>
+        <title>Play! Framework</title>
+
+        <meta charset='utf-8'>
+        <script src='jsslides.js'></script>
+        <link href="style.css" rel="stylesheet" type="text/css"/>
+    </head>
+  
+    <body style='display: none'>
+
+    <section class='slides layout-regular template-default'>
+      
+        <article class="first">
+            <h1>Play! Framework</h1>
+            <p style="text-align: right; position: relative; top: 200px"><img style="text-align: right" src="zauber.gif"/></p>
+            <p style="text-align: left; position: relative; top: 120px">Martín Gontovnikas <br />@mgonto</p>
+        </article>      
+      
+        <article class="">
+            <h3 class="bigger">Agenda</h3>
+            <ul class="">
+                <li>
+                    Como creamos una WebApp ahora?
+                </li>
+                <li>
+                    Play Principles
+                </li>
+                <li>
+                    Play Internals
+                </li>
+                <li>
+                    Getting our hands dirty
+                </li>
+                <li>
+                    ¿Que acabamos de ver?
+                </li>
+                <li>
+                    Let's deploy this app
+                </li>
+                <li>
+                    Dale Play!
+                </li>
+               <li>
+                    Magics explained
+                </li>
+                <li>
+                    Modulos
+                </li>
+                <li>
+                    Hasta ahora todo muy lindo....
+                </li>
+            </ul>
+        </article>
+      
+        <article>
+            <h1>Como creamos una WebApp ahora?</h1>
+        </article>      
+      
+        <article>
+            <h3>Pensemos que vamos a usar</h3>
+            <ul class="build no-first">
+                <li>
+                  <img class='centered' style='height:150px' src='pensando.png'>
+                </li>
+                <li>Hibernate</li>
+                <li>Spring</li>
+                <li>Spring MVC</li>
+                <li>Tiles</li>
+                <li>JPA</li>
+                <li>JSP</li>
+                <li>Servlets</li>
+                
+            </ul>
+        </article>
+        <article>
+            <h3>Configuremos hibernate</h3>
+            <iframe src="hib.txt" style="height: 500px"></iframe>
+        </article>
+        <article>
+            <h3>Configuremos Spring MVC</h3>
+            <iframe src="web.txt" style="height: 500px"></iframe>
+        </article>
+        <article class="fill">
+            <p><img class="centered" src="noo.jpg"/></p>
+        </article>
+
+        <article>
+            <h3>Play! Principles</h3>
+            <ul class="build">
+                <li>Es rápido</li>
+                <li>Es fácil de configurar</li>
+                <li>Es un framework vertical</li>
+                <li>Es configurable</li>
+                <li>Es extensible</li>
+                <li>Los cambios son vistos en RealTime</li>
+            </ul>
+        </article>
+
+        <article class="nobackground">
+            <h3>Ahora configuremos Play!</h3>
+            <iframe src="play.properties" style="height: 500px"></iframe>
+            
+        </article>
+
+        <article class="fill">
+            <p><img class="centered" src="fuckyea.png"/></p>
+        </article>
+
+        <article>
+            <h3>Play! Internals</h3>
+            <ul class="build">
+                <li>Netty</li>
+                <li>Hibernate</li>
+                <li>JPA</li>
+                <li>Se puede convertir a un WAR normal</li>
+            </ul>
+        </article>
+
+        <article>
+            <h1>Let's get our hands dirty</h1>
+        </article>
+
+        <article>
+            <h3>Y si ahora...</h3>
+            <ul class="build">
+                <li>... quiero agregar un buscador, qué hago?</li>
+                <li>... quiero validar que el nombre deba tener mínimo 4 letras?</li>
+                <li>... quiero agregar una página de perfil por persona?</li>
+            </ul>
+        </article>        
+
+        <article>
+            <h1>¿Que acabamos de ver?</h1>
+        </article>
+
+        <article>
+            <h3>Controllers</h3>
+            <ul class="build">
+                <li>Los métodos son públicos y estáticos</li>
+                <li>Los redirects se hacen llamando a otro método</li>
+                <li>El binding de los objetos se realiza automaticamente</li>
+                <li>Reconoce solo los nombres de las variables a enviar al template</li>
+                <li>Render y RenderArgs son usados para enviar objetos a la vista</li>
+                <li>Se utilizan validations y params para bindear y validar</li>
+                <li>JSON made easy con renderJson</li>
+            </ul>
+        </article>
+
+        <article>
+            <h3>Vistas</h3>
+            <ul class="build">
+                <li>Las vistas utilizan el lenguaje de scripting Groovy</li>
+                <li>Los helpers que tiene son muy similares a los de JSP</li>
+                <li>La herencia de templates se declara inline.</li>
+                <li>La creacion de URLs absolutas y relativas ya esta resuelto</li>
+            </ul>
+        </article>
+
+         <article>
+            <h3>Modelos</h3>
+            <ul class="build">
+                <li>Los modelos se crean con anotaciones normal de JPA</li>
+                <li>Cuentan con métodos que facilitan el ABMC de los mismos</li>
+                <li>Las propiedades deben ser públicas</li>
+                <li>Los getters y setters son creados automáticamente</li>
+                <li>Las validaciones declaradas aqui son usadas tanto en la vista como en la interacción con la DB</li>
+                <li>El comportamiento debe estar en los modelos, eliminando asi la necesidad de IoC</li>
+            </ul>
+        </article>
+
+        <article>
+            <h3>Rutas</h3>
+            <ul class="build">
+                <li>Se encuentran todas las rutas en un solo archivo</li>
+                <li>Es mucho mas fácil "tracearlas"</li>
+                <li>Permite crear rutas con Regex y parametros</li>
+            </ul>
+        </article>
+
+        <article>
+            <h1>Let's deploy this app!</h1>
+        </article>
+
+        <article>
+            <h1>Dale Play!<h1>
+        </article>
+
+        
+         <article>
+            <h3>Flash, Params y Validaciones</h3>
+            <ul class="build">
+                <li>Play! cree que las WebApps deben ser stateless</li>
+                <li>Desalienta el uso de la session</li>
+                <li>El flash es una cookie que vive un request</li>
+                <li>El flash es utilizado para validaciones, mensajes y parámetros HTTP</li>
+                <li>La cache es utilizada para guardar objetos que deben permanecer a lo largo de los requests</li>
+            </ul>
+        </article>
+
+        <article>
+            <h3>Tests</h3>
+            <ul class="build">
+                <li>Permite crear tests unitarios a los cuales estamos acostumbrados</li>
+                <li>Permite crear tests funcionales que levantan un server web inline sin necesidad de un browser</li>
+                <li>Permite crear tests de Selenium para probar el flujo y la UI</li>
+                <li>Provee una herramienta web para correrlos facilmente</li>
+            </ul>
+        </article>
+
+        <article>
+            <h1>Magics explained</h1>
+        </article>
+
+        <article>
+            <h3>Controllers Magic</h3>
+            <ul class="build">
+                <li>Usa ByteCode Enhancement para ver que variables fueron llamadas en un metodo y saber los nombres para mandarlos al template</li>
+                <li>Tiene un objeto singleton que le permite determinar si se esta dentro de una accion. Si es asi, llamar a otra accion hace un redirect</li>
+            </ul>
+        </article>
+
+        <article>
+            <h3>Models Magic</h3>
+            <ul class="build">
+                <li>Cada vez que se llama a una property de un objeto, llama al getter o setter de la misma</li>
+                <li>Si este getter ya existia, no lo crea. En caso contrario lo crea.</li>
+                <li>Para todo esto utiliza ByteCode Enhancement</li>
+            </ul>
+        </article>
+
+        <article>
+            <h1>Módulos</h1>
+        </article>
+        
+        <article>
+            <h3>Que es un módulo?</h3>
+            <ul class="build">
+                <li>Es una dependencia del proyecto muy similar a un JAR</li>
+                <li>Permite crear dependencias no solo de código Java, sino de HTML y JS de forma muy facil</li>
+                <li>Hay una gran comunidad que crea módulos para Play!</li>
+            </ul>
+        </article>
+        
+        <article>
+            <h3>Módulos Conocidos</h3>
+            <ul class="build">
+            <li>
+                <h3>Secure</h3>
+                <ul class="build">
+                    <li>Es un módulo que nos permite agregarle login a nuestra app de forma muy simple</li>
+                </ul>
+            </li>
+            <li>
+                <h3 style="margin-top: 20px">Greenscript</h3>
+                <ul class="build">
+                    <li>Es un módulo que nos permite en producción minimizar, juntar y comprimir los JS y CSS</li>
+                    <li>Nos permite crear dependencias entre los JS y CSS</li>
+                </ul>
+            </li>
+            <li>
+                <h3 style="margin-top: 20px">CRUD</h3>
+                <ul class="build">
+                    <li>Nos permite crear Scaffolds para las aplicaciones</li>
+                </ul>
+            </li>
+            </ul>
+        </article>
+
+        <article>
+            <h3>Modulos Conocidos (Continuacion)</h3>
+            <ul class="build">
+            <li>
+                <h3>GAE</h3>
+                <ul class="build">
+                    <li>Nos permite mantener la misma API de Play! pero utilizando internamente las APIs de GAE</li>
+                </ul>
+            </li>
+            <li>
+                <h3 style="margin-top: 20px">Spring</h3>
+                <ul class="build">
+                    <li>Nos permite integrar nuestros proyectos con Spring</li>
+                </ul>
+            </li>
+            <li>
+                <h3 style="margin-top: 20px">Spock</h3>
+                <ul class="build">
+                    <li>Nos permite crear tests en Spock</li>
+                </ul>
+            </li>
+            <li>
+            <h3>Y muchos más... </h3>
+            </li>
+            </ul>
+        </article>
+
+        <article>
+            <h3>Hasta ahora todo muy lindo...</h3>
+            <ul class="build">
+                <li>No es multi proyecto</li>
+                <li>No baja todos los sources de las dependencias</li>
+                <li>No hay command para el form web</li>
+                <li>Propiedades públicas</li>
+                <li>Errores crípticos de templates</li>
+                <li>Métodos estáticos</li>
+            </ul>
+        </article>
+
+    
+
+       <article class="fill">
+            <p><img style="height:100%" src="iwantyou.jpg"/></p>
+        </article>
+
+        <article>
+            <h1 style="text-align: center">¿Preguntas?</h1>
+        </article>
+
+        <article class="fill">
+            <p><img style="height:100%" src="theend.jpg"/></p>
+        </article>
+    </section>
+
+  </body>
+</html>
