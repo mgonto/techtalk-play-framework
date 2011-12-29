@@ -3,3 +3,4 @@
 require:
     - play
     - com.google.guava -> guava 11.0
+    - play -> secure

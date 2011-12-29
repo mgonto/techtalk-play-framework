@@ -5,7 +5,9 @@ import java.util.List;
 import models.Contact;
 import play.data.validation.Valid;
 import play.mvc.Controller;
+import play.mvc.With;
 
+@With(Secure.class)
 public class Agenda extends Controller {
     
     public static void newContact() {
