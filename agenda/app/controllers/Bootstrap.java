@@ -1,6 +1,6 @@
 package controllers;
 
-import models.User;
+import models.AgendaUser;
 import play.jobs.Job;
 import play.jobs.OnApplicationStart;
 
@@ -9,9 +9,9 @@ public class Bootstrap extends Job {
     
     @Override
     public void doJob() throws Exception {
-        if (User.count() == 0) {
-            User u = new User();
-            u.username = "gonto";
+        if (AgendaUser.count() == 0) {
+            AgendaUser u = new AgendaUser();
+            u.userLogin = "gonto";
             u.password = "gonto";
             u.save();
         }
