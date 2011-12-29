@@ -3,6 +3,7 @@ package controllers;
 import java.util.List;
 
 import models.Contact;
+import play.data.validation.Valid;
 import play.mvc.Controller;
 
 public class Agenda extends Controller {
@@ -11,7 +12,12 @@ public class Agenda extends Controller {
         render();
     }
     
-    public static void create(final Contact contact) {
+    public static void create(@Valid final Contact contact) {
+        if (validation.hasErrors()) {
+            validation.keep();
+            params.flash();
+            newContact();
+        }
         contact.save();
         list();
     }

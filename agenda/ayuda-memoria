@@ -1,0 +1,13 @@
+^[3456][0-9]{3}-?[0-9]{4}$
+
+  #{field 'contact.name'}
+	<p>
+	  <label>&{'contactName'}</label>
+	  <input type="text" id="${field.id}" name="${field.name}" value="${field.flash}" class="${field.errorClass}">
+	  <span class="error">${field.error}</span>
+	</p>
+	#{/}
+
+	#{list items:contacts, as:'c'}
+    <li>&{'contactName'}: ${c.name}. &{'telNumber'}: ${c.telephoneNumber}</li>
+#{/list}

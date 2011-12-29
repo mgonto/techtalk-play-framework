@@ -5,14 +5,14 @@
     #{field 'contact.name'}
 	<p>
 	  <label>&{'contactName'}</label>
-	  <input type="text" id="${field.id}" name="${field.name}" value="${field.value}" class="${field.errorClass}">
+	  <input type="text" id="${field.id}" name="${field.name}" value="${field.flash}" class="${field.errorClass}">
 	  <span class="error">${field.error}</span>
 	</p>
 	#{/}
 	#{field 'contact.telephoneNumber'}
     <p>
       <label>&{'telNumber'}</label>
-      <input type="text" id="${field.id}" name="${field.name}" value="${field.value}" class="${field.errorClass}">
+      <input type="text" id="${field.id}" name="${field.name}" value="${field.flash}" class="${field.errorClass}">
       <span class="error">${field.error}</span>
     </p>
     #{/}
