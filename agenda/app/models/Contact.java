@@ -3,6 +3,7 @@ package models;
 import javax.persistence.Entity;
 
 import play.data.validation.Match;
+import play.data.validation.MinSize;
 import play.data.validation.Required;
 import play.db.jpa.Model;
 
@@ -10,6 +11,7 @@ import play.db.jpa.Model;
 public class Contact extends Model {
     
     @Required
+    @MinSize(4)
     public String name;
 
     @Required
