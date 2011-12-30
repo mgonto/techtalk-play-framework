@@ -37,7 +37,7 @@
             <h3 class="bigger">Agenda</h3>
             <ul class="">
                 <li>
-                    Let's create a WebApp
+                    Let's create a WebApp without Play!
                 </li>
                 <li>
                     Play Promises
@@ -91,7 +91,7 @@
         </article>
         <article>
             <h3>Configuremos hibernate</h3>
-            <pre class="lang-xml" style="height: 300px; font-size: 10px; overflow: auto;">
+            <pre class="lang-xml" style="height: 300px; font-size: 16px; overflow: auto;">
 &lt;?xml version="1.0" encoding="UTF-8"?&gt;
 &lt;beans xmlns="http://www.springframework.org/schema/beans"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -252,7 +252,7 @@
         </article>
         <article>
             <h3>Configuremos Spring MVC</h3>
-            <pre class="lang-xml" style="height: 300px; font-size: 10px; overflow: auto;">
+            <pre class="lang-xml" style="height: 300px; font-size: 16px; overflow: auto;">
 &lt;?xml version="1.0"?&gt;
 &lt;beans xmlns="http://www.springframework.org/schema/beans"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:util="http://www.springframework.org/schema/util"
@@ -941,7 +941,7 @@ play run
                   No!
                 </p>
                 <p>
-                  2. Sino queremos que tenga estado, es necesario tener una instancia?
+                  2. Si no queremos que tenga estado, es necesario tener una instancia?
                 </p>
                 <p style="margin-left: 87px">
                   No!
@@ -977,7 +977,13 @@ play run
             
               <ul class="build">
                 <li>Es un Trade Off: Productividad vs Programacion Defensiva</li>
-                <li>La programación defensiva nos fuerza a escribir mucho codigo de mas: DTOs, Getters, Setters, Transformers, etc.</li>
+                <li>La relajación de la programación defensiva nos permite ser mas productivos:
+                <ul>
+                  <li>Nos crea getters y setters automáticamente</li>
+                  <li>Nos permite acceder via properties</li>
+                  <li>Nos permite usar el modelo desde la vista</li>
+                </ul>
+                <li>La programación defensiva nos fuerza a escribir mucho más código: DTOs, Getters, Setters, Transformers, etc.</li>
                 <li>Aunque usemos Programación defensiva:
                   <ul>
                     <li>
@@ -1156,9 +1162,7 @@ public static void list() {
                 <li>No es multi proyecto</li>
                 <li>No baja todos los sources de las dependencias</li>
                 <li>No hay command para el form web</li>
-                <li>Propiedades públicas</li>
                 <li>Errores crípticos de templates</li>
-                <li>Métodos estáticos</li>
             </ul>
         </article>
 
