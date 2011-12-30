@@ -7,7 +7,7 @@ import play.mvc.With;
 public class Application extends Controller {
 
     public static void index() {
-        Agenda.newContact();
+        Agenda.list();
     }
 
 }
