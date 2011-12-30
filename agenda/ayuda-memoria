@@ -15,3 +15,34 @@
 %prod.db=${DATABASE_URL}
 %prod.jpa.dialect=org.hibernate.dialect.PostgreSQLDialect
 %prod.jpa.ddl=update
+
+private static final String LOCATION_HEADER = "Location";
+    private Map<String, Cookie> cookies;
+
+    @Before
+    public void setUp() {
+        Fixtures.deleteDatabase();
+        Fixtures.loadModels("data.yml");
+    }
+    
+    public static void 
+
+    private void LOGIN() {
+        Map<String, String> loginUserParams = new HashMap<String, String>();
+        loginUserParams.put("username", "gonto");
+        loginUserParams.put("password", "gonto");
+        Response loginResponse = POST("/secure/authenticate", loginUserParams);
+        cookies = loginResponse.cookies;
+    }
+    
+    private Response SECURED_GET(final String url) {
+        Request request = newRequest();
+        request.cookies = cookies;
+        return GET(request, url);
+    }
+
+    private Response SECURED_POST(final String url, final Map<String, String> params) {
+        Request request = newRequest();
+        request.cookies = cookies; // this makes the request authenticated
+        return POST(request, url, params, new HashMap<String, File>());
+    }
