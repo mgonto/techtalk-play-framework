@@ -916,19 +916,86 @@ play run
             <h3>Rutas</h3>
             <ul>
                 <li>Se encuentran todas las rutas en un solo archivo</li>
-                <li>Es mucho mas fácil "tracearlas"</li>
+                <li>Es mucho mas fácil rastrearlas</li>
                 <li>Permite crear rutas con Regex y parametros</li>
             </ul>
         </article>
 
         <article>
-            <h3>Thinking outside the box</h3>
-            <ul class="build">
-                <li>Por qué no son buenos los métodos estáticos?</li>
-                <li>Por qué no son buenas las propiedades publicas?</li>
-                <li>Por qué esta bueno usar DTOs o Commands para la vista?</li>
-            </ul>
+            <h1>Thinking outside the box</h1>
         </article>
+
+        <article class="fill">
+            <h1>Play! usa metodos estaticos</h1>
+            <p><img style="height: 100%" src ="suici.jpg" /></p>
+        </article>
+
+        <article class="fill">
+            <h3 style="margin-bottom: 30px">Play! usa metodos estaticos</h3>
+            
+              <div class="build">
+                <p>
+                  1. Queremos que un controller tenga estado?
+                </p>
+                <p style="margin-left: 87px">
+                  No!
+                </p>
+                <p>
+                  2. Sino queremos que tenga estado, es necesario tener una instancia?
+                </p>
+                <p style="margin-left: 87px">
+                  No!
+                </p>
+                <p>
+                  3. El controller es un conjunto de acciones, que pueden ser pensadas como un conjunto de funciones?
+                </p>
+                <p style="margin-left: 87px">
+                  Si!
+                </p>
+                <p>
+                  4. Para generalizar funciones, normalmente, lo que hacemos no es componer?
+                </p>
+                <p style="margin-left: 87px">
+                  Si!
+                </p>
+                </div>
+        </article>
+
+        
+        <article class="fill">
+            <h1>Entonces no esta mal que use métodos estáticos</h1>
+            <p><img style="height: 100%" src ="static.jpg" /></p>
+        </article>
+
+         <article class="fill">
+            <h1>Play! usa propiedades publicas</h1>
+            <p><img style="height: 100%" src ="suici2.jpg" /></p>
+        </article>
+
+        <article>
+            <h3>Play! usa propiedades publicas</h3>
+            
+              <ul class="build">
+                <li>Es un Trade Off: Productividad vs Programacion Defensiva</li>
+                <li>La programación defensiva nos fuerza a escribir mucho codigo de mas: DTOs, Getters, Setters, Transformers, etc.</li>
+                <li>Aunque usemos Programación defensiva:
+                  <ul>
+                    <li>
+                    Hibernate nos modifica los objetos via Reflection
+                    </li>
+                    <li>
+                    Las vistas JSP requieren Getters y Setters para mostrar los datos
+                    </li>
+                  </ul>
+                </li>
+        </article>
+
+        
+        <article class="fill">
+            <h1>Entonces no esta mal que use propiedades publicas</h1>
+            <p><img style="height: 100%" src ="pub.jpg" /></p>
+        </article>
+
 
         <article>
             <h1>Let's deploy this app!</h1>
@@ -945,6 +1012,7 @@ play run
             <ul class="build">
                 <li><strong>Play! cree que las WebApps deben ser stateless</strong></li>
                 <li>Desalienta el uso de la session</li>
+                <li>La session es una cookie en el cliente</li>
                 <li><strong>El flash es una cookie que vive un request</strong></li>
                 <li>El flash es utilizado para validaciones, mensajes y parámetros HTTP</li>
                 <li>La cache es utilizada para guardar objetos que deben permanecer a lo largo de los requests</li>
@@ -952,9 +1020,32 @@ play run
         </article>
 
         <article>
+          <h3>Flash, Params y validaciones (Ejemplo)</h3>
+          <pre class="lang-java" style="height: 470px; font-size: 18px">
+public static void create(@Valid final Contact contact) {
+    if (validation.hasErrors()) {
+        validation.keep();
+        params.flash();
+        newContact();
+    }
+    flash.success("El objeto se creo correctamente");
+    Cache.set(session.getId() + LAST_CONTACT, contact);
+    contact.save();
+    list();
+}
+
+public static void list() {
+    Contact c = (Contact) Cache.get(session.getId() + LAST_CONTACT);
+    List&lt;Contact&gt; contacts = Contact.findAll();
+    render(contacts, c);
+}
+          </pre>
+        </article>
+
+        <article>
             <h3>Tests</h3>
             <ul class="build">
-                <li>Permite crear tests unitarios a los cuales estamos acostumbrados</li>
+                <li>Permite crear tests unitarios</li>
                 <li>Permite crear tests funcionales que levantan un server web inline sin necesidad de un browser</li>
                 <li>Permite crear tests de Selenium para probar el flujo y la UI</li>
                 <li>Provee una herramienta web para correrlos facilmente</li>
@@ -979,6 +1070,14 @@ play run
                 <li>Cada vez que se llama a una property de un objeto, llama al getter o setter de la misma</li>
                 <li>Si este getter ya existia, no lo crea. En caso contrario lo crea.</li>
                 <li>Para todo esto utiliza ByteCode Enhancement</li>
+            </ul>
+        </article>
+
+        <article>
+            <h3>Magics</h3>
+            <ul class="build">
+                <li>El byte code Enhacement se realiza en Compile Time en Producccion y en tiempo de ejecución en development.</li>
+                <li>Para mas información sobre las magicas ir a <a target="_blank" href="http://spinscale.github.com/play-advanced-concepts.html?full">este</a> link
             </ul>
         </article>
 
