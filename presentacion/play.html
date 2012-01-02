@@ -246,7 +246,7 @@
             </pre>
             <ul class="build">
                 <li>160 lineas de configuración</li>
-                <li>Configuracion via XML y properties</li>
+                <li>Configuración vía XML y properties</li>
             </ul>
             
         </article>
@@ -882,7 +882,7 @@ play run
             <ul>
                 <li>Los métodos son públicos y estáticos</li>
                 <li>Los redirects se hacen llamando a otro método</li>
-                <li>El binding de los parametros se realiza automaticamente</li>
+                <li>El binding de los parámetros se realiza automáticamente</li>
                 <li>Reconoce solo los nombres de las variables a enviar al template</li>
                 <li>Render y RenderArgs son usados para enviar objetos a la vista</li>
                 <li>Se utilizan validations y params para bindear y validar</li>
@@ -926,12 +926,12 @@ play run
         </article>
 
         <article class="fill">
-            <h1>Play! usa metodos estaticos</h1>
+            <h1>Play! usa métodos estáticos</h1>
             <p><img style="height: 100%" src ="suici.jpg" /></p>
         </article>
 
         <article class="fill">
-            <h3 style="margin-bottom: 30px">Play! usa metodos estaticos</h3>
+            <h3 style="margin-bottom: 30px">Play! usa métodos estáticos</h3>
             
               <div class="build">
                 <p>
@@ -947,7 +947,7 @@ play run
                   No!
                 </p>
                 <p>
-                  3. El controller es un conjunto de acciones, que pueden ser pensadas como un conjunto de funciones?
+                  3. Es el controller un conjunto de acciones que pueden ser pensadas como un conjunto de funciones?
                 </p>
                 <p style="margin-left: 87px">
                   Si!
@@ -968,15 +968,15 @@ play run
         </article>
 
          <article class="fill">
-            <h1>Play! usa propiedades publicas</h1>
+            <h1>Play! usa propiedades públicas</h1>
             <p><img style="height: 100%" src ="suici2.jpg" /></p>
         </article>
 
         <article>
-            <h3>Play! usa propiedades publicas</h3>
+            <h3>Play! usa propiedades públicas</h3>
             
               <ul class="build">
-                <li>Es un Trade Off: Productividad vs Programacion Defensiva</li>
+                <li>Es un Trade Off: Productividad vs Programación Defensiva</li>
                 <li>La relajación de la programación defensiva nos permite ser mas productivos:
                 <ul>
                   <li>Nos crea getters y setters automáticamente</li>
@@ -1034,7 +1034,7 @@ public static void create(@Valid final Contact contact) {
         params.flash();
         newContact();
     }
-    flash.success("El objeto se creo correctamente");
+    flash.success("El objeto se creó correctamente");
     Cache.set(session.getId() + LAST_CONTACT, contact);
     contact.save();
     list();
@@ -1065,8 +1065,8 @@ public static void list() {
         <article>
             <h3>Controllers Magic</h3>
             <ul class="build">
-                <li>Usa ByteCode Enhancement para ver que variables fueron llamadas en un metodo y saber los nombres para mandarlos al template</li>
-                <li>Tiene un objeto singleton que le permite determinar si se esta dentro de una accion. Si es asi, llamar a otra accion hace un redirect</li>
+                <li>Usa ByteCode Enhancement para ver que variables fueron llamadas en un método y saber los nombres para mandarlos al template</li>
+                <li>Tiene un objeto singleton que le permite determinar si se esta dentro de una acción. De ser así, llamar a otra acción hace un redirect</li>
             </ul>
         </article>
 
@@ -1082,8 +1082,8 @@ public static void list() {
         <article>
             <h3>Magics</h3>
             <ul class="build">
-                <li>El byte code Enhacement se realiza en Compile Time en Producccion y en tiempo de ejecución en development.</li>
-                <li>Para mas información sobre las magicas ir a <a target="_blank" href="http://spinscale.github.com/play-advanced-concepts.html?full">este</a> link
+                <li>El byte code Enhacement se realiza en Compile Time en Produccción y en tiempo de ejecución en development.</li>
+                <li>Para mas información sobre las magias ir a <a target="_blank" href="http://spinscale.github.com/play-advanced-concepts.html?full">este</a> link
             </ul>
         </article>
 
@@ -1159,9 +1159,9 @@ public static void list() {
         <article>
             <h3>What's the catch?</h3>
             <ul class="build">
-                <li>No es multi proyecto</li>
-                <li>No baja todos los sources de las dependencias</li>
-                <li>No hay command para el form web</li>
+                <li>No es multi proyecto (La version 2.0 ya lo es)</li>
+                <li>No baja todos los sources de las dependencias (Hay pull requests para poder realizar esto)</li>
+                <li>No hay command para el form web (Pero permite bindear de a mas de un objeto a la vez)</li>
                 <li>Errores crípticos de templates</li>
             </ul>
         </article>
