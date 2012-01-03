@@ -3,6 +3,7 @@ package controllers;
 import java.util.List;
 
 import models.Contact;
+import notifiers.Mails;
 import play.data.validation.Valid;
 import play.mvc.Controller;
 import play.mvc.With;
@@ -21,6 +22,7 @@ public class Agenda extends Controller {
             newContact();
         }
         contact.save();
+        Mails.sendnewContact(contact);
         list();
     }
     

@@ -16,5 +16,12 @@
       <span class="error">${field.error}</span>
     </p>
     #{/}
+    #{field 'contact.mail'}
+    <p>
+      <label>&{'Mail'}</label>
+      <input type="text" id="${field.id}" name="${field.name}" value="${field.flash}" class="${field.errorClass}">
+      <span class="error">${field.error}</span>
+    </p>
+    #{/}
     <input type="submit" value="Mandar"/>
 </form>

@@ -1,0 +1,3 @@
+&{'new-contact'}
+Hola ${c.name} te queria contar que te agregue como contacto a mi SUPER cool agenda. 
+Espero que estes feliz! Tu numero es ${c.telephoneNumber}, no? Sino avisame y lo cambio!
