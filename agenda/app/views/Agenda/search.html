@@ -1,0 +1,25 @@
+#{extends 'main.html' /}
+#{set title:'Buscar contactos' /}
+<h1>Buscar Contactos</h1>
+<form method="get" action="@{Agenda.search}">
+    #{field 'q'}
+    <p>
+      <label>Ingrese el texto a buscar</label>
+      <input type="text" id="${field.id}" name="${field.name}" value="${field.flash}" class="${field.errorClass}">
+      <span class="error">${field.error}</span>
+    </p>
+    #{/}
+    <input type="submit" value = "Buscar" />
+</form>
+#{if q != ""}
+	<ul>
+	    #{list items:contacts, as:'c'}
+	        <li>&{'contactName'}: ${c.name}. &{'telNumber'}: ${c.telephoneNumber}</li>
+	   #{/list}
+	</ul>    
+	#{else}
+	   #{if !first}
+	       <h2>No hay resultados con ese patron de busqueda</h2>
+       #{/if}
+   #{/else}
+#{/if}

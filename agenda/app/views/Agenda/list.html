@@ -5,5 +5,14 @@
 #{list items:contacts, as:'c'}
     <li>&{'contactName'}: ${c.name}. &{'telNumber'}: ${c.telephoneNumber}</li>
 #{/list}
-<a href="@{Agenda.newContact()}" >Crear nuevo</a>
+#{else}
+    No hay ningun contacto aun
+#{/else}
 </ul>
+<br />
+<ol>
+    <li><a href="@{Agenda.newContact()}" >Crear nuevo</a></li>
+    <li><a href="@{Agenda.search('', true)}" >Buscar Contactos</a></li>
+</ol>
+
+
