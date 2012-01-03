@@ -24,6 +24,20 @@ public class Agenda extends Controller {
         list();
     }
     
+    public static void edit(final Long id) {
+        Contact contact = Contact.findById(id);
+        notFoundIfNull(contact);
+        render(contact);
+    }
+    
+    public static void save(@Valid final Contact contact) {
+        if (validation.hasErrors()) {
+            render("@edit", contact);
+        }
+        contact.save();
+        list();
+    }
+    
     public static void list() {
         List<Contact> contacts = Contact.findAll();
         render(contacts);

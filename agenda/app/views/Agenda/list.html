@@ -3,7 +3,8 @@
 <h1>Listar contactos</h1>
 <ul>
 #{list items:contacts, as:'c'}
-    <li>&{'contactName'}: ${c.name}. &{'telNumber'}: ${c.telephoneNumber}</li>
+    <li>&{'contactName'}: ${c.name}. &{'telNumber'}: ${c.telephoneNumber}.
+    Para editar toca click <a href="@{Agenda.edit(c.id)}">aqui</a></li>
 #{/list}
 <a href="@{Agenda.newContact()}" >Crear nuevo</a>
 </ul>

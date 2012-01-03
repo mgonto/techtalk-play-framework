@@ -48,6 +48,25 @@ public class AgendaFunctionalTest extends FunctionalTest {
     }
     
     @Test
+    public void testEditContact() {
+        Fixtures.loadModels("contacts.yml");
+        LOGIN();
+        Assert.assertEquals(0, Contact.find("byName", "JonnyBoy").fetch().size());
+        Map<String, String> data = Maps.newHashMap();
+        String name = "JonnyBoy";
+        String telephoneNumber = "44444444";
+        data.put("contact.name", name);
+        data.put("contact.telephoneNumber", telephoneNumber );
+        data.put("contact.id", "2");
+        
+        SECURED_POST("/agenda/edit", data);
+        
+        Contact c = Contact.find("byNameAndTelephoneNumber", name, telephoneNumber).first();
+        
+        Assert.assertNotNull(c);
+    }
+    
+    @Test
     public void testGetAddContact() {
         LOGIN();
         Response response = SECURED_GET("/agenda/new");
