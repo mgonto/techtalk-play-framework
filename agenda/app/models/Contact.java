@@ -23,4 +23,7 @@ public class Contact extends Model {
     @Email
     public String mail;
     
+    
+    public boolean annoyed = false;
+    
 }

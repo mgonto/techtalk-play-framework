@@ -3,7 +3,14 @@
 <h1>Listar contactos</h1>
 <ul>
 #{list items:contacts, as:'c'}
-    <li>&{'contactName'}: ${c.name}. &{'telNumber'}: ${c.telephoneNumber}</li>
+    <li>&{'contactName'}: ${c.name}. &{'telNumber'}: ${c.telephoneNumber}.
+    #{if c.annoyed}
+    Tu amigo esta siendo molestado. Click <a href="@{Annoy.stop(c.id)}">aqui</a> para parar
+    #{/if}
+    #{else}
+    Tu amigo no esta siendo molestado. Click <a href="@{Annoy.start(c.id)}">aqui</a> para comenzar
+    #{/else}
+    </li>
 #{/list}
 <a href="@{Agenda.newContact()}" >Crear nuevo</a>
 </ul>

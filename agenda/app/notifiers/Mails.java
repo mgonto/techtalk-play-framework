@@ -11,6 +11,13 @@ public class Mails extends Mailer {
         setSubject("Te he agregado como contacto");
         send(c);
     }
+    
+    public static void annoy(final Contact c) {
+        setFrom("zaubertest.test@gmail.com");
+        addRecipient(c.mail);
+        setSubject("Te molesto, lala");
+        send(c);
+    }
 
 
 
