@@ -1,7 +1,19 @@
 *{ You can use plain selenium command using the selenium tag }*
+#{fixture delete:'all', load:['data.yml', 'contacts.yml'] /}
 
 #{selenium}
     // Open the home page, and check that no error occured
     open('/')
     assertNotTitle('Application error')
+#{/selenium}
+//Test the login and list contacts
+#{selenium}
+    clearSession()
+    open('/')
+    waitForPageToLoad(10000)
+    type('css=#username', 'gonto')
+    type('css=#password', 'gonto')
+    clickAndWait('css=#signin')
+    verifyText('//li[1]','*gonto*')
+    verifyText('//li[2]','*miguel*')
 #{/selenium}

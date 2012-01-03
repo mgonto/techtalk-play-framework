@@ -46,3 +46,15 @@ private static final String LOCATION_HEADER = "Location";
         request.cookies = cookies; // this makes the request authenticated
         return POST(request, url, params, new HashMap<String, File>());
     }
+
+
+    #{selenium}
+    clearSession()
+    open('/')
+    waitForPageToLoad(10000)
+    type('css=#username', 'gonto')
+    type('css=#password', 'gonto')
+    clickAndWait('css=#signin')
+    verifyText('//li[1]','*gonto*')
+    verifyText('//li[2]','*miguel*')
+#{/selenium}
