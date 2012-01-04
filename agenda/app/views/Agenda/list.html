@@ -7,8 +7,8 @@
 <h1>Listar contactos</h1>
 #{if flash.success}
     <div class="alert-message success">
-        <a class="close" href="#">×</a>
-        <p>flash.success</p>
+        <a class="close" href="@{Agenda.list()}">X</a>
+        <p>${flash.success}</p>
     </div>    
 #{/if}
 
