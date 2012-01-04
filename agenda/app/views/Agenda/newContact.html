@@ -1,20 +1,33 @@
 #{extends 'main.html' /}
 #{set title:'Nuevo contacto' /}
-
-<form  method="POST" action="@{Agenda.create()}">
-    #{field 'contact.name'}
-	<p>
-	  <label>&{'contactName'}</label>
-	  <input type="text" id="${field.id}" name="${field.name}" value="${field.flash}" class="${field.errorClass}">
-	  <span class="error">${field.error}</span>
-	</p>
-	#{/}
-	#{field 'contact.telephoneNumber'}
-    <p>
-      <label>&{'telNumber'}</label>
-      <input type="text" id="${field.id}" name="${field.name}" value="${field.flash}" class="${field.errorClass}">
-      <span class="error">${field.error}</span>
-    </p>
-    #{/}
-    <input type="submit" value="Mandar"/>
+<ul class="pills">
+  <li><a href="@{Agenda.list()}">Listar contactos</a></li>
+  <li class="active"><a href="#">Nuevo contacto</a></li>
+</ul>
+<h2>Agregar nuevo contacto</h2>
+<form  method="POST" action="@{Agenda.create()}" class="form-stacked">
+    <fieldset>
+	    #{field 'contact.name'}
+	    
+        <div class="clearfix #{ifError field.name}error#{/ifError}">
+		  <label for="${field.name}">&{'contactName'}</label>
+		  <div class="input">
+              <input class="xlarge" type="text" id="${field.id}" name="${field.name}" value="${field.flash}" >
+              <span class="help-inline">${field.error}</span>
+            </div>
+		</div>
+		#{/}
+		#{field 'contact.telephoneNumber'}
+		<div class="clearfix #{ifError field.name}error#{/ifError}">
+          <label for="${field.name}">&{'telNumber'}</label>
+          <div class="input">
+              <input class="xlarge" type="text" id="${field.id}" name="${field.name}" value="${field.flash}" >
+              <span class="help-inline">${field.error}</span>
+            </div>
+        </div>
+	    #{/}
+    </fieldset>
+    <div class="actions">
+          <button type="submit" class="btn primary">Save changes</button>&nbsp;<button type="reset" class="btn">Cancel</button>
+   </div>
 </form>
