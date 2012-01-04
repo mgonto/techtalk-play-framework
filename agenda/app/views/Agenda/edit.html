@@ -1,23 +1,38 @@
 #{extends 'main.html' /}
 #{set title:'Nuevo contacto' /}
-
-<form  method="POST" action="@{Agenda.save()}">
-    #{field 'contact.id'}
-      <input type="hidden" id="${field.id}" name="${field.name}" value="${contact.id}" class="${field.errorClass}">
-    #{/}
-    #{field 'contact.name'}
-	<p>
-	  <label>&{'contactName'}</label>
-	  <input type="text" id="${field.id}" name="${field.name}" value="${contact.name}" class="${field.errorClass}">
-	  <span class="error">${field.error}</span>
-	</p>
-	#{/}
-	#{field 'contact.telephoneNumber'}
-    <p>
-      <label>&{'telNumber'}</label>
-      <input type="text" id="${field.id}" name="${field.name}" value="${contact.telephoneNumber}" class="${field.errorClass}">
-      <span class="error">${field.error}</span>
-    </p>
-    #{/}
-    <input type="submit" value="Mandar"/>
+<ul class="pills">
+  <li><a href="@{Agenda.list()}">Listar contactos</a></li>
+  <li><a href="@{Agenda.newContact()}">Nuevo contacto</a></li>
+  <li class="active"><a href="#">Editar contacto</a></li>
+</ul>
+<h2>Editar contacto</h2>
+<form  method="POST" action="@{Agenda.save()}" class="form-stacked">
+    <fieldset>
+        #{field 'contact.id'}
+	      <input type="hidden" id="${field.id}" name="${field.name}" value="${contact.id}" class="${field.errorClass}">
+	    #{/}
+        #{field 'contact.name'}
+        
+        <div class="clearfix #{ifError field.name}error#{/ifError}">
+          <label for="${field.name}">&{'contactName'}</label>
+          <div class="input">
+              <input class="xlarge" type="text" id="${field.id}" name="${field.name}" value="${field.value}" >
+              <span class="help-inline">${field.error}</span>
+            </div>
+        </div>
+        #{/}
+        #{field 'contact.telephoneNumber'}
+        <div class="clearfix #{ifError field.name}error#{/ifError}">
+          <label for="${field.name}">&{'telNumber'}</label>
+          <div class="input">
+              <input class="xlarge" type="text" id="${field.id}" name="${field.name}" value="${field.value}" >
+              <span class="help-inline">${field.error}</span>
+            </div>
+        </div>
+        #{/}
+    </fieldset>
+    <div class="actions">
+          <button type="submit" class="btn primary">Save changes</button>
+   </div>
 </form>
+

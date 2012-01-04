@@ -1,10 +1,38 @@
 #{extends 'main.html' /}
 #{set title:'Nuevo contacto' /}
-<h1>Listar contactos</h1>
-<ul>
-#{list items:contacts, as:'c'}
-    <li>&{'contactName'}: ${c.name}. &{'telNumber'}: ${c.telephoneNumber}.
-    Para editar toca click <a href="@{Agenda.edit(c.id)}">aqui</a></li>
-#{/list}
-<a href="@{Agenda.newContact()}" >Crear nuevo</a>
+<ul class="pills">
+  <li class="active"><a href="#">Listar contactos</a></li>
+  <li><a href="@{Agenda.newContact()}">Nuevo contacto</a></li>
 </ul>
+<h1>Listar contactos</h1>
+#{if flash.success}
+    <div class="alert-message success">
+        <a class="close" href="@{Agenda.list()}">X</a>
+        <p>${flash.success}</p>
+    </div>    
+#{/if}
+
+
+
+
+
+    <div class="span12">
+	    <table class="condensed-table bordered-table zebra-striped">
+	        <thead>
+	          <tr>
+	            <th>Nombre</th>
+	            <th>Telefono</th>
+	            <th>Editar</th>
+	          </tr>
+	        </thead>
+	        <tbody>
+	           #{list items:contacts, as:'c'}
+			    <tr>
+			        <td>${c.name}</td>
+			        <td>${c.telephoneNumber}</td>
+			        <td><a href="@{Agenda.edit(c.id)}">Editar</a></td>
+			    </tr>
+               #{/list}
+	        </tbody>
+	    </table>
+    </div>

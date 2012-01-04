@@ -21,6 +21,7 @@ public class Agenda extends Controller {
             newContact();
         }
         contact.save();
+        flash.success("Yey! Se creo correctamente el contacto");
         list();
     }
     
@@ -34,6 +35,7 @@ public class Agenda extends Controller {
         if (validation.hasErrors()) {
             render("@edit", contact);
         }
+        flash.success("Yey! El contacto se edito correctamente");
         contact.save();
         list();
     }
