@@ -23,6 +23,7 @@
 	            <th>Nombre</th>
 	            <th>Telefono</th>
 	            <th>Molestar</th>
+	            <th>Editar</th>
 	          </tr>
 	        </thead>
 	        <tbody>
@@ -36,7 +37,8 @@
 				    #{else}
 				        <td><a href="@{Annoy.start(c.id)}">Comenzar</a></td>
 				    #{/else}
-			    </tr>
+			        <td><a href="@{Agenda.edit(c.id)}">Editar</a></td>
+1			    </tr>
                #{/list}
 	        </tbody>
 	    </table>

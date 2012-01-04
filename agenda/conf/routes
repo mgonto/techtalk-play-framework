@@ -16,5 +16,7 @@ POST /agenda/create                             Agenda.create
 GET /agenda/list                                Agenda.list
 GET /annoy/start/{id}                            Annoy.start
 GET /annoy/stop/{id}                            Annoy.stop
+GET /agenda/edit/{id}                           Agenda.edit
+POST /agenda/edit                               Agenda.save
 
 *       /{controller}/{action}                  {controller}.{action}
