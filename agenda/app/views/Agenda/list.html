@@ -1,8 +1,32 @@
 #{extends 'main.html' /}
 #{set title:'Nuevo contacto' /}
 <h1>Listar contactos</h1>
-<ul>
-#{list items:contacts, as:'c'}
-    <li>&{'contactName'}: ${c.name}. &{'telNumber'}: ${c.telephoneNumber}</li>
-#{/list}
-</ul>
+#{if flash.success}
+    <div class="alert-message success">
+        <a class="close" href="#">×</a>
+        <p>flash.success</p>
+    </div>    
+#{/if}
+
+
+
+
+
+    <div class="span12">
+	    <table class="condensed-table bordered-table">
+	        <thead>
+	          <tr>
+	            <th>Nombre</th>
+	            <th>Telefono</th>
+	          </tr>
+	        </thead>
+	        <tbody>
+	           #{list items:contacts, as:'c'}
+			    <tr>
+			        <td>${c.name}</td>
+			        <td>${c.telephoneNumber}</td>
+			    </tr>
+               #{/list}
+	        </tbody>
+	    </table>
+    </div>
