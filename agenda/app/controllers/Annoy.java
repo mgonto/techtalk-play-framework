@@ -20,6 +20,7 @@ public class Annoy extends Controller {
         notFoundIfNull(contact);
         contact.annoyed = annoy;
         contact.save();
+        flash.success((annoy ? "Comenzaste a" : "Terminaste de") + " molestar a tu amigo correctamente");
         Agenda.list();
     }
 
