@@ -23,6 +23,7 @@ public class Agenda extends Controller {
             newContact();
         }
         contact.save();
+        flash.success("Yey! Se creo correctamente el contacto");
         list();
     }
     

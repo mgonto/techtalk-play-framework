@@ -1,25 +1,51 @@
 #{extends 'main.html' /}
 #{set title:'Buscar contactos' /}
+<ul class="pills">
+  <li><a href="@{Agenda.list()}">Listar contactos</a></li>
+  <li><a href="@{Agenda.newContact()}">Nuevo contacto</a></li>
+  <li class="active"><a href="#">Buscar</a></li>
+</ul>
 <h1>Buscar Contactos</h1>
-<form method="get" action="@{Agenda.search}">
-    #{field 'q'}
-    <p>
-      <label>Ingrese el texto a buscar</label>
-      <input type="text" id="${field.id}" name="${field.name}" value="${field.flash}" class="${field.errorClass}">
-      <span class="error">${field.error}</span>
-    </p>
-    #{/}
-    <input type="submit" value = "Buscar" />
+<form  method="get" action="@{Agenda.search()}" class="form-stacked">
+    <fieldset>
+        #{field 'q'}
+        
+        <div class="clearfix #{ifError field.name}error#{/ifError}">
+          <label>Ingrese el texto a buscar</label>
+          <div class="input">
+              <input class="xlarge" type="text" id="${field.id}" name="${field.name}" value="${field.flash}" >
+              <span class="help-inline">${field.error}</span>
+              <button type="submit" class="btn primary">Buscar</button>
+            </div>
+        </div>
+        #{/}
+    </fieldset>
 </form>
+<div class="span12">
 #{if q != ""}
-	<ul>
-	    #{list items:contacts, as:'c'}
-	        <li>&{'contactName'}: ${c.name}. &{'telNumber'}: ${c.telephoneNumber}</li>
-	   #{/list}
-	</ul>    
-	#{else}
-	   #{if !first}
-	       <h2>No hay resultados con ese patron de busqueda</h2>
-       #{/if}
-   #{/else}
+        #{if contacts.size > 0}
+        <table class="condensed-table bordered-table zebra-striped">
+            <thead>
+              <tr>
+                <th>Nombre</th>
+                <th>Telefono</th>
+              </tr>
+            </thead>
+            <tbody>
+               #{list items:contacts, as:'c'}
+                <tr>
+                    <td>${c.name}</td>
+                    <td>${c.telephoneNumber}</td>
+                </tr>
+               #{/list}
+               
+            </tbody>
+        </table>
+        #{/if}
+		#{else}
+		   #{if !first}
+		       <h2>No hay resultados con ese patron de busqueda</h2>
+	       #{/if}
+	   #{/else}
 #{/if}
+</div>

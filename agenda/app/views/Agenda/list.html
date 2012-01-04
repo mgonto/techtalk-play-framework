@@ -1,18 +1,38 @@
 #{extends 'main.html' /}
 #{set title:'Nuevo contacto' /}
-<h1>Listar contactos</h1>
-<ul>
-#{list items:contacts, as:'c'}
-    <li>&{'contactName'}: ${c.name}. &{'telNumber'}: ${c.telephoneNumber}</li>
-#{/list}
-#{else}
-    No hay ningun contacto aun
-#{/else}
+<ul class="pills">
+  <li class="active"><a href="#">Listar contactos</a></li>
+  <li><a href="@{Agenda.newContact()}">Nuevo contacto</a></li>
+  <li><a href="@{Agenda.search('', true)}">Buscar</a></li>
 </ul>
-<br />
-<ol>
-    <li><a href="@{Agenda.newContact()}" >Crear nuevo</a></li>
-    <li><a href="@{Agenda.search('', true)}" >Buscar Contactos</a></li>
-</ol>
+<h1>Listar contactos</h1>
+#{if flash.success}
+    <div class="alert-message success">
+        <a class="close" href="@{Agenda.list()}">X</a>
+        <p>${flash.success}</p>
+    </div>    
+#{/if}
 
 
+
+
+
+    <div class="span12">
+	    <table class="condensed-table bordered-table zebra-striped">
+	        <thead>
+	          <tr>
+	            <th>Nombre</th>
+	            <th>Telefono</th>
+	          </tr>
+	        </thead>
+	        <tbody>
+	           #{list items:contacts, as:'c'}
+			    <tr>
+			        <td>${c.name}</td>
+			        <td>${c.telephoneNumber}</td>
+			    </tr>
+               #{/list}
+	        </tbody>
+	    </table>
+    </div>
+    
