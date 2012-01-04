@@ -3,6 +3,7 @@
 <ul class="pills">
   <li><a href="@{Agenda.list()}">Listar contactos</a></li>
   <li><a href="@{Agenda.newContact()}">Nuevo contacto</a></li>
+  <li><a href="@{Agenda.search('', true)}">Buscar</a></li>
   <li class="active"><a href="#">Editar contacto</a></li>
 </ul>
 <h2>Editar contacto</h2>
@@ -24,6 +25,15 @@
         #{field 'contact.telephoneNumber'}
         <div class="clearfix #{ifError field.name}error#{/ifError}">
           <label for="${field.name}">&{'telNumber'}</label>
+          <div class="input">
+              <input class="xlarge" type="text" id="${field.id}" name="${field.name}" value="${field.value}" >
+              <span class="help-inline">${field.error}</span>
+            </div>
+        </div>
+        #{/}
+        #{field 'contact.mail'}
+        <div class="clearfix #{ifError field.name}error#{/ifError}">
+          <label for="${field.name}">&{'Mail'}</label>
           <div class="input">
               <input class="xlarge" type="text" id="${field.id}" name="${field.name}" value="${field.value}" >
               <span class="help-inline">${field.error}</span>
