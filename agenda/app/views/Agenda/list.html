@@ -3,6 +3,7 @@
 <ul class="pills">
   <li class="active"><a href="#">Listar contactos</a></li>
   <li><a href="@{Agenda.newContact()}">Nuevo contacto</a></li>
+  <li><a href="@{Agenda.search('', true)}">Buscar</a></li>
 </ul>
 <h1>Listar contactos</h1>
 #{if flash.success}
@@ -43,3 +44,4 @@
 	        </tbody>
 	    </table>
     </div>
+    

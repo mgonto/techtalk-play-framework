@@ -3,6 +3,7 @@
 <ul class="pills">
   <li><a href="@{Agenda.list()}">Listar contactos</a></li>
   <li class="active"><a href="#">Nuevo contacto</a></li>
+  <li><a href="@{Agenda.search('', true)}">Buscar</a></li>
 </ul>
 <h2>Agregar nuevo contacto</h2>
 <form  method="POST" action="@{Agenda.create()}" class="form-stacked">
