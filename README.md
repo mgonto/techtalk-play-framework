@@ -16,6 +16,7 @@ Hay varios ejercicios ha ser realizados sobre el ejemplo-final. Cada uno de esto
 
 ## Branches
 A continuación, se enumerarán todos los Branches con su correspondiente explicación:
+
 *  __gh-pages__: En este branch encontrarán la presentacion que fue dada en Zauber Software sobre Play!. Dicha presentacion fue realizada utilizando el template de Google para presentaciones con HTML5.
 *  __master__: Contiene este readme
 *  __ejemplo, ejemplo-step-#__: Esta serie de branches contienen los diversos pasos que fueron mostrados en la presentacion de Play! para crear la Agenda.
