@@ -23,3 +23,6 @@ A continuación, se enumerarán todos los Branches con su correspondiente explic
 *  __ejemplo-final__: Aquí esta la versión terminada del ejemplo
 *  __ejercicio-*__: Aquí estan las soluciones a los ejercicios enunciados en la sección anterior
 *  __completo__: Este branch es un merge del ejemplo-final con todos los ejercicios propuestos.
+
+[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/mgonto/techtalk-play-framework/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
+
